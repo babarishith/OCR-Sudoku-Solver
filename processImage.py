@@ -25,9 +25,10 @@ def getSubBox(img_path):
 
     grid_boxes = [None]*81
     i,j = 8,0
+    cut = 0
     for n,box in enumerate(boxes):
         x, y, w, h = box
-        grid_boxes[9*i+j] = result[y:y+h, x:x+w]
+        grid_boxes[9*i+j] = result[y+int(h*cut):y+int(h*(1-cut)), x+int(w*cut):x+int(w*(1-cut))]
         i = i - 1
         if i < 0:
             j = j + 1
